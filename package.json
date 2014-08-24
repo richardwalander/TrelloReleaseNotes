@@ -1,0 +1,40 @@
+{
+  "name": "TrelloReleaseNotes",
+  "version": "0.0.0",
+  "description": "Chrome plugin for creating release notes from Trello.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Wålander <richard.walander@gmail.com>",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "browserify": "~4.2.3",
+    "browserify-shim": "~3.6.0",
+    "grunt-shell": "~1.0.1"
+  },
+  "volo": {
+    "baseDir": "src/js/lib/",
+    "dependencies": {
+      "jquery.min": "http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js",
+      "../../css/bootstrap.min.css": "http://bootswatch.com/flatly/bootstrap.min.css",
+      "stapes.min": "http://cdnjs.cloudflare.com/ajax/libs/stapes/0.8.1/stapes.min.js",
+      "js-markdown-extra": "https://raw.githubusercontent.com/tanakahisateru/js-markdown-extra/1.2.4/js-markdown-extra.js",
+      "ashe": "https://raw.githubusercontent.com/dfsq/Ashe/master/ashe.js"
+    }
+  },
+  "browser": {
+    "jquery": "./src/js/lib/jquery.min.js",
+    "stapes": "./src/js/lib/stapes.min.js",
+    "markdown": "./src/js/lib/js-markdown-extra.js",
+    "ashe": "./src/js/lib/ashe.js"
+  },
+  "browserify-shim": "./config/shim.js",
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  }
+}

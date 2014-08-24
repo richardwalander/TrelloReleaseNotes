@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Getting Started Extension's Popup</title>
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+
+		<!--
+			- JavaScript and HTML must be in separate files: see our Content Security
+			- Policy documentation[1] for details and explanation.
+			-
+			- [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+		 -->
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-static-top">
+			<div class="navbar-header">
+				<span class="navbar-brand">Print Release Notes</span>
+			</div>
+		</div>
+		<div class="container" style="min-width: 400px;">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="app" >
+						<div class="progress progress-striped active">
+							<div class="progress-bar progress-bar-success" style="width: 100%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/html" id="main-tmpl">
+			<h3>Select List to Print</h3>
+			<ul class="list-group">
+				
+			</ul>
+			<hr>
+			<a class="print btn btn-success btn-block" href="#">Print List</a>
+			<br>
+		</script>
+
+		<!--script type="text/html" id="list-item-tmpl">
+			<li class="list-group-item">
+				<div class="radio">
+					<span class="badge pull-right">14</span>
+					<label>
+						<input type="radio" name="lists" id="optionsRadios1" value="option1" checked="">
+						<span class="name">Option one is this</span>
+					</label>
+				</div>
+			</li>
+		</script-->
+
+		<script type="text/html" id="list-item-tmpl">
+			<li class="list-group-item">
+				<div class="radio">
+					<!--span class="badge pull-right">14</span-->
+					<label>
+						<input type="radio" name="lists" id="optionsRadios1" value="{{id}}" checked="">
+						<span class="name">{{name}}</span>
+					</label>
+				</div>
+			</li>
+		</script>
+
+		<script type="text/html" id="print-tmpl">
+			<!DOCTYPE html>
+			<html>
+				<head>
+					<meta charset=utf-8>
+					<title>Release Notes</title>
+					<link href="http://fonts.googleapis.com/css?family=Risque" rel="stylesheet" type="text/css">
+					<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+				</head>
+				<body>
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-12">
+								<h1>Release Notes</h1>
+								
+								<h2>{% if greencards.name %}{{greencards.name}}{% else %}{{greencards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in greencards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+
+								<h2>{% if yellowcards.name %}{{yellowcards.name}}{% else %}{{yellowcards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in yellowcards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+								
+								<h2>{% if orangecards.name %}{{orangecards.name}}{% else %}{{orangecards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in orangecards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+								
+								<h2>{% if redcards.name %}{{redcards.name}}{% else %}{{redcards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in redcards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+								
+								<h2>{% if purplecards.name %}{{purplecards.name}}{% else %}{{purplecards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in purplecards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+								
+								<h2>{% if bluecards.name %}{{bluecards.name}}{% else %}{{bluecards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in bluecards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+								
+								<h2>{% if nolabelcards.name %}{{nolabelcards.name}}{% else %}{{nolabelcards.color}}{% endif %}</h2>
+								<ul id="list">
+									{% for card in nolabelcards.cards %}
+										<li><a href="{{card.shortUrl}}">#{{card.shortLink}}</a> - {{card.name}}</li>
+									{% endfor %}
+								</ul>
+								
+							</div>
+						</div>
+					</div>
+				</body>
+			</html>
+		</script>
+		
+		<script src="./js/popup.js"></script>
+	</body>
+</html>
+
