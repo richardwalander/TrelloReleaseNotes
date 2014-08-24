@@ -1,5 +1,5 @@
 # TrelloReleaseNotes
-====================
+--------------------
 
 Chrome extension for printing release notes from [Trello.com](https://trello.com). This extension will create release notes from all cards from a specified list in Trello and categories the cards as lists based on label.
 
