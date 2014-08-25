@@ -32,11 +32,23 @@ module.exports = function(grunt) {
 			browserify: {
 				command: '(browserify ./src/js/main.js -d -o ./src/js/popup.js)'
 			}
-		}
+		},
+		release: {
+	        options: {
+	        file: 'manifest.json', //default: package.json
+	        npm: false
+	        // github: { 
+	        //   repo: 'geddski/grunt-release', //put your user/repo here
+	        //   usernameVar: 'GITHUB_USERNAME', //ENVIRONMENT VARIABLE that contains Github username 
+	        //   passwordVar: 'GITHUB_PASSWORD' //ENVIRONMENT VARIABLE that contains Github password
+	        // }
+	      }
+	    }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-release');
 
 	grunt.registerTask('default', ['jshint', 'requirejs', 'less:production']);
 
